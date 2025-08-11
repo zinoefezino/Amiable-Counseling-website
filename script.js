@@ -40,36 +40,6 @@ window.addEventListener("scroll", function () {
   );
 })();
 
-// document.addEventListener("DOMContentLoaded", () => {
-//   const menuToggle = document.querySelector(".menu-toggle");
-
-//   const navList = document.querySelector(".nav-links ul");
-
-//   const menuIcon = document.getElementById("menu");
-//   const closeIcon = document.getElementById("close");
-
-//   menuToggle.addEventListener("click", () => {
-//     navList.classList.toggle("show");
-
-//     if (navList.classList.contains("show")) {
-//       menuIcon.style.display = "none";
-//       closeIcon.style.display = "block";
-//     } else {
-//       menuIcon.style.display = "block";
-//       closeIcon.style.display = "none";
-//     }
-//   });
-
-//   const navLinks = document.querySelectorAll(".nav-links a");
-//   navLinks.forEach((link) => {
-//     link.addEventListener("click", () => {
-//       navList.classList.remove("show");
-//       menuIcon.style.display = "block";
-//       closeIcon.style.display = "none";
-//     });
-//   });
-// });
-
 document.addEventListener("DOMContentLoaded", () => {
   const menuIcon = document.getElementById("menu");
   const closeIcon = document.getElementById("close");
