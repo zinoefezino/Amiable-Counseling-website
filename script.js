@@ -28,29 +28,24 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeIcon = document.getElementById("close");
   const navList = document.querySelector(".nav-links ul");
 
-  // Get all navigation links within the mobile menu
   const navLinks = navList.querySelectorAll("a");
 
-  // Function to close the mobile menu
   const closeMobileMenu = () => {
     navList.classList.remove("show");
     closeIcon.style.display = "none";
     menuIcon.style.display = "block";
   };
 
-  // Event listener to open the menu
   menuIcon.addEventListener("click", () => {
     navList.classList.add("show");
     menuIcon.style.display = "none";
     closeIcon.style.display = "block";
   });
 
-  // Event listener to close the menu
   closeIcon.addEventListener("click", () => {
     closeMobileMenu();
   });
 
-  // Add event listener to each nav link to close the menu when clicked
   navLinks.forEach((link) => {
     link.addEventListener("click", () => {
       closeMobileMenu();

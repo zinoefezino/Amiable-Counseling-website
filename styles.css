@@ -59,6 +59,7 @@ header {
   gap: 2rem;
   list-style: none;
   margin-right: 170px;
+  justify-content: space-between;
 }
 
 nav a {
@@ -103,7 +104,7 @@ nav a {
   align-items: center;
   justify-content: center;
   text-align: center;
-  background-image: url(./images/richard-de-ruijter-kHdCQQ7uYh4-unsplash.jpg);
+  background-image: url(./images/richard-de-ruijter-kHdCQQ7uYh4-unsplash.webp);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -243,7 +244,7 @@ nav a {
 }
 
 .Individual {
-  background-image: url(./images/priscilla-du-preez-F9DFuJoS9EU-unsplash.jpg);
+  background-image: url(./images/priscilla-du-preez-F9DFuJoS9EU-unsplash.webp);
   position: relative;
   background-size: cover;
   background-position: center;
@@ -260,7 +261,7 @@ nav a {
   z-index: 1;
 }
 .Relationship {
-  background-image: url(./images/adrian-ordonez-D7zdEdb9dbY-unsplash.jpg);
+  background-image: url(./images/adrian-ordonez-D7zdEdb9dbY-unsplash.webp);
   position: relative;
   background-size: cover;
   background-position: center;
@@ -278,7 +279,7 @@ nav a {
 }
 
 .SelfDevelopment {
-  background-image: url(./images/fredrik-solli-wandem-Bmz4AhKQQSc-unsplash.jpg);
+  background-image: url(./images/fredrik-solli-wandem-Bmz4AhKQQSc-unsplash.webp);
   position: relative;
   background-size: cover;
   background-position: center;
@@ -296,7 +297,7 @@ nav a {
 }
 
 .Career {
-  background-image: url(./images/brooke-cagle-JBwcenOuRCg-unsplash.jpg);
+  background-image: url(./images/brooke-cagle-JBwcenOuRCg-unsplash.webp);
   position: relative;
   background-size: cover;
   background-position: center;
@@ -314,7 +315,7 @@ nav a {
 }
 
 .Academic {
-  background-image: url(./images/leon-wu-LLfRMRT-9AY-unsplash.jpg);
+  background-image: url(./images/leon-wu-LLfRMRT-9AY-unsplash.webp);
   position: relative;
   background-size: cover;
   background-position: center;
@@ -332,7 +333,7 @@ nav a {
 }
 
 .AnxietyDepression {
-  background-image: url(./images/nik-shuliahin-BuNWp1bL0nc-unsplash.jpg);
+  background-image: url(./images/nik-shuliahin-BuNWp1bL0nc-unsplash.webp);
   position: relative;
   background-size: cover;
   background-position: center;
@@ -528,12 +529,6 @@ nav a {
   to {
     transform: translateX(-230%);
   }
-}
-
-/* Blog Section */
-.blog {
-  padding: 5rem 0;
-  background: white;
 }
 
 /* Resources Section */
@@ -751,5 +746,10 @@ footer {
 
   .mobile-social a:hover {
     color: #da99da; /* your theme color */
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
   }
 }
