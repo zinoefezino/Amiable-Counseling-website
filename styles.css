@@ -631,13 +631,14 @@ footer {
     display: flex;
     flex-direction: column;
     background-color: #ffffff;
-    position: absolute;
+    /* position: absolute; */
+    position: fixed;
     top: 0;
     right: -100%;
     width: 80%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     padding: 2rem;
-    height: 100vh;
+    /* height: 100vh; */
     transition: right 0.3s ease;
     z-index: 999;
     margin: 0;
@@ -698,11 +699,12 @@ footer {
   }
 
   .hero-content h1 {
-    font-size: 2.5rem;
+    font-size: 2.6rem;
   }
 
   .hero-content p {
     font-size: 1.1rem;
+    line-height: 1.5;
   }
 
   .about-content {

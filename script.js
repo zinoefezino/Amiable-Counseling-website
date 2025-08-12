@@ -53,24 +53,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// document.addEventListener("DOMContentLoaded", () => {
-//   const menuIcon = document.getElementById("menu");
-//   const closeIcon = document.getElementById("close");
-//   const navList = document.querySelector(".nav-links ul");
-
-//   menuIcon.addEventListener("click", () => {
-//     navList.classList.add("show");
-//     menuIcon.style.display = "none";
-//     closeIcon.style.display = "block";
-//   });
-
-//   closeIcon.addEventListener("click", () => {
-//     navList.classList.remove("show");
-//     closeIcon.style.display = "none";
-//     menuIcon.style.display = "block";
-//   });
-// });
-
 document.addEventListener("DOMContentLoaded", () => {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
