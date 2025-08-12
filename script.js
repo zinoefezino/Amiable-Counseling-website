@@ -1,19 +1,8 @@
-window.addEventListener("scroll", function () {
-  const header = document.querySelector("header");
-  if (window.scrollY > 0) {
-    header.classList.add("scrolled");
-  } else {
-    header.classList.remove("scrolled");
-  }
-});
-
-// Simple marquee duplicator + pause on hover
 (function () {
   const marquee = document.getElementById("reviews-marquee");
   const track = document.getElementById("reviews-track");
   if (!marquee || !track) return;
 
-  // Duplicate slides until 2x width for seamless loop
   const ensureLoopWidth = () => {
     const containerWidth = marquee.clientWidth;
     let trackWidth = track.scrollWidth;
@@ -26,14 +15,8 @@ window.addEventListener("scroll", function () {
   };
 
   ensureLoopWidth();
-  window.addEventListener("resize", () => {
-    // Optional: reset and rebuild on resize for accuracy
-    // Comment out if not needed
-    // while (track.children.length > 5) track.removeChild(track.lastElementChild);
-    // ensureLoopWidth();
-  });
+  window.addEventListener("resize", () => {});
 
-  // Pause on hover
   marquee.addEventListener("mouseenter", () => marquee.classList.add("paused"));
   marquee.addEventListener("mouseleave", () =>
     marquee.classList.remove("paused")
