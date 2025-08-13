@@ -149,56 +149,55 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuIcon = document.getElementById("menu");
   const closeIcon = document.getElementById("close");
   const navList = document.querySelector(".nav-links ul");
-  const backdrop = document.querySelector(".menu-backdrop");
+  const navLinks = navList.querySelectorAll("a");
 
-  const closeMobileMenu = () => {
-    navList.classList.remove("show");
-    closeIcon.style.display = "none";
-    menuIcon.style.display = "block";
-    document.body.classList.remove("menu-open");
-    backdrop.classList.remove("active");
-  };
+  let touchHandled = false;
 
-  menuIcon.addEventListener("click", () => {
+  const openMenu = (e) => {
+    if (touchHandled && e.type === "click") return;
+    if (e.type === "touchstart") touchHandled = true;
+
     navList.classList.add("show");
     menuIcon.style.display = "none";
     closeIcon.style.display = "block";
-    document.body.classList.add("menu-open");
-    backdrop.classList.add("active");
-  });
+  };
 
-  closeIcon.addEventListener("click", () => {
-    closeMobileMenu();
-  });
+  const closeMenu = (e) => {
+    if (touchHandled && e.type === "click") return;
+    if (e.type === "touchstart") touchHandled = true;
 
-  // Unified handler for all #anchor links (handles close and smooth scroll)
-  const navLinks = document.querySelectorAll('a[href^="#"]');
+    navList.classList.remove("show");
+    closeIcon.style.display = "none";
+    menuIcon.style.display = "block";
+  };
+
+  const handleNavClick = (e) => {
+    if (touchHandled && e.type === "click") return;
+    if (e.type === "touchstart") touchHandled = true;
+
+    e.preventDefault();
+    const targetId = e.currentTarget.getAttribute("href");
+    const targetElement = document.querySelector(targetId);
+
+    closeMenu(e);
+
+    setTimeout(() => {
+      targetElement.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }, 300);
+  };
+
+  menuIcon.addEventListener("click", openMenu);
+  menuIcon.addEventListener("touchstart", openMenu, { passive: true });
+
+  closeIcon.addEventListener("click", closeMenu);
+  closeIcon.addEventListener("touchstart", closeMenu, { passive: true });
+
   navLinks.forEach((link) => {
-    link.addEventListener("click", (e) => {
-      e.preventDefault();
-      const id = link.getAttribute("href").slice(1);
-      const target = document.getElementById(id);
-      if (!target) return;
-
-      const wasMenuOpen = navList.classList.contains("show");
-      if (wasMenuOpen) {
-        closeMobileMenu();
-      }
-
-      setTimeout(
-        () => {
-          target.scrollIntoView({ behavior: "smooth", block: "start" });
-        },
-        wasMenuOpen ? 350 : 0
-      ); // Delay scroll if menu was closing
-
-      // Remove hash from URL to prevent reload/jump issues
-      history.replaceState(
-        null,
-        "",
-        window.location.pathname + window.location.search
-      );
-    });
+    link.addEventListener("click", handleNavClick);
+    link.addEventListener("touchstart", handleNavClick, { passive: false });
   });
 });
 
