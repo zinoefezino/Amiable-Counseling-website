@@ -602,16 +602,6 @@ footer {
   margin-bottom: 1rem;
 }
 
-.scroll-element {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.6s ease-out;
-}
-.scroll-element.animate {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 /* Responsive Design */
 @media (max-width: 768px) {
   .nav-links ul {

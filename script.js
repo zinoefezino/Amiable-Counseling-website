@@ -220,18 +220,3 @@ window.addEventListener("pageshow", (event) => {
     );
   }
 });
-
-document.addEventListener("DOMContentLoaded", () => {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("animate");
-        observer.unobserve(entry.target); // animate once
-      }
-    });
-  });
-
-  document
-    .querySelectorAll(".scroll-element")
-    .forEach((el) => observer.observe(el));
-});
