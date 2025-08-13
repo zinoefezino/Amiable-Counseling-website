@@ -93,7 +93,7 @@ if ("scrollRestoration" in history) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  // 2. Intercept all in page nav links so the URL does not keep the hash
+  // 2. Intercept all in-page nav links so the URL does not keep the hash
   const navLinks = document.querySelectorAll('a[href^="#"]');
   navLinks.forEach((link) => {
     link.addEventListener("click", (e) => {
@@ -118,7 +118,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 3a. If user lands or reloads with a hash, jump to top and clear it
   if (location.hash) {
-    // Run after the browser’s own hash jump
     setTimeout(() => {
       window.scrollTo(0, 0);
       history.replaceState(
@@ -130,9 +129,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// 3b. Handle back forward cache restores on mobile browsers
-window.addEventListener("pageshow", () => {
-  if (location.hash) {
+// 3b. Handle back-forward cache restores on mobile browsers
+window.addEventListener("pageshow", (event) => {
+  if (event.persisted) {
+    // Force a full reload if restored from cache
+    window.location.reload();
+  } else if (location.hash) {
     window.scrollTo(0, 0);
     history.replaceState(
       null,
