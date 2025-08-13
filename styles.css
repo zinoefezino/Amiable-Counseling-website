@@ -629,6 +629,10 @@ footer {
     z-index: 999;
   }
 
+  header {
+    padding: 7px;
+  }
+
   .none {
     display: block;
   }
