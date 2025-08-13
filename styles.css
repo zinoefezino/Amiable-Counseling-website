@@ -631,8 +631,8 @@ footer {
     display: flex;
     flex-direction: column;
     background-color: #ffffff;
-    /* position: absolute; */
-    position: fixed;
+    position: absolute;
+    /* position: fixed; */
     top: 0;
     right: -100%;
     width: 80%;
