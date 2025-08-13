@@ -28,38 +28,31 @@ body {
 
 header {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   background-color: #ffffff;
-  padding: 7px;
+  padding: 20px 40px;
   align-items: center;
   border: 3px solid #ffffff;
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
   z-index: 1000;
-  /* width: 100%; */
-  margin: 0 auto;
-  /* transition: width 0.3s ease; */
+  width: 100%;
+}
+
+nav ul {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+}
+
+.none {
+  display: none;
 }
 
 .menu-toggle {
   display: none;
   cursor: pointer;
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
-}
-
-.nav-menu {
-  display: flex;
-  gap: 2rem;
-  list-style: none;
-  justify-content: space-between;
 }
 
 nav a {
@@ -89,7 +82,6 @@ nav a {
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 1px;
-  margin-left: auto;
 }
 
 .book-session:hover {
@@ -129,11 +121,6 @@ nav a {
   background: rgba(0, 0, 0, 0.3);
   z-index: 1;
 }
-
-/* .hero .container {
-  position: relative;
-  z-index: 2;
-} */
 
 .hero-content {
   margin-top: 80px;
@@ -626,22 +613,28 @@ footer {
 }
 
 /* Responsive Design */
-@media (max-width: 900px) {
+@media (max-width: 768px) {
   .nav-links ul {
     display: flex;
     flex-direction: column;
     background-color: #ffffff;
     position: absolute;
-    /* position: fixed; */
     top: 0;
     right: -100%;
     width: 80%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     padding: 2rem;
-    /* height: 100vh; */
+    height: 1000px;
     transition: right 0.3s ease;
     z-index: 999;
-    margin: 0;
+  }
+
+  .none {
+    display: block;
+  }
+
+  .book-session {
+    display: none;
   }
 
   .cta-buttons {
@@ -650,19 +643,6 @@ footer {
 
   .cta-buttons a {
     padding: 0.6rem 1rem;
-  }
-
-  header {
-    width: 100%;
-  }
-
-  .header-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    position: relative;
-    /* z-index: 10; */
   }
 
   .logo img {
@@ -734,7 +714,7 @@ footer {
 
   .mobile-social {
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     gap: 1rem;
     margin-top: 2rem;
   }
