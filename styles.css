@@ -58,7 +58,6 @@ header {
   display: flex;
   gap: 2rem;
   list-style: none;
-  margin-right: 170px;
   justify-content: space-between;
 }
 
