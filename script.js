@@ -87,10 +87,6 @@ document.addEventListener("DOMContentLoaded", () => {
 //   });
 // });
 
-window.onload = function () {
-  window.scrollTo(0, 0);
-};
-
 document.addEventListener("DOMContentLoaded", () => {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
