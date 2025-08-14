@@ -32,30 +32,106 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-(function () {
-  const marquee = document.getElementById("reviews-marquee");
-  const track = document.getElementById("reviews-track");
-  if (!marquee || !track) return;
+// (function () {
+//   const marquee = document.getElementById("reviews-marquee");
+//   const track = document.getElementById("reviews-track");
+//   if (!marquee || !track) return;
 
-  const ensureLoopWidth = () => {
-    const containerWidth = marquee.clientWidth;
-    let trackWidth = track.scrollWidth;
-    const items = Array.from(track.children);
-    let safety = 20;
-    while (trackWidth < containerWidth * 2 && safety-- > 0) {
-      items.forEach((el) => track.appendChild(el.cloneNode(true)));
-      trackWidth = track.scrollWidth;
-    }
-  };
+//   const ensureLoopWidth = () => {
+//     const containerWidth = marquee.clientWidth;
+//     let trackWidth = track.scrollWidth;
+//     const items = Array.from(track.children);
+//     let safety = 20;
+//     while (trackWidth < containerWidth * 2 && safety-- > 0) {
+//       items.forEach((el) => track.appendChild(el.cloneNode(true)));
+//       trackWidth = track.scrollWidth;
+//     }
+//   };
 
-  ensureLoopWidth();
-  window.addEventListener("resize", () => {});
+//   ensureLoopWidth();
+//   window.addEventListener("resize", () => {});
 
-  marquee.addEventListener("mouseenter", () => marquee.classList.add("paused"));
-  marquee.addEventListener("mouseleave", () =>
-    marquee.classList.remove("paused")
-  );
-})();
+//   marquee.addEventListener("mouseenter", () => marquee.classList.add("paused"));
+//   marquee.addEventListener("mouseleave", () =>
+//     marquee.classList.remove("paused")
+//   );
+// })();
+
+document.addEventListener("DOMContentLoaded", () => {
+  // --- Review Marquee Control Functionality ---
+  const reviewsMarquee = document.getElementById("reviews-marquee");
+  const reviewsTrack = document.getElementById("reviews-track");
+  const prevBtn = document.getElementById("prev-review");
+  const nextBtn = document.getElementById("next-review");
+
+  if (reviewsMarquee && reviewsTrack && prevBtn && nextBtn) {
+    const pauseMarquee = () => {
+      reviewsMarquee.classList.add("paused");
+    };
+
+    const resumeMarquee = () => {
+      reviewsMarquee.classList.remove("paused");
+    };
+
+    const getCardWidth = () => {
+      const card = reviewsTrack.querySelector(".testimonial.card");
+      if (!card) return 0;
+      const style = window.getComputedStyle(card);
+      const cardWidth = card.offsetWidth;
+      const gap = parseFloat(style.marginRight) || 0;
+      return cardWidth + gap;
+    };
+
+    prevBtn.addEventListener("click", () => {
+      pauseMarquee();
+      const cardWidth = getCardWidth();
+      reviewsMarquee.scrollBy({
+        left: -cardWidth,
+        behavior: "smooth",
+      });
+      setTimeout(resumeMarquee, 1000);
+    });
+
+    nextBtn.addEventListener("click", () => {
+      pauseMarquee();
+      const cardWidth = getCardWidth();
+      reviewsMarquee.scrollBy({
+        left: cardWidth,
+        behavior: "smooth",
+      });
+      setTimeout(resumeMarquee, 1000);
+    });
+
+    reviewsMarquee.addEventListener("mouseenter", pauseMarquee);
+    reviewsMarquee.addEventListener("mouseleave", resumeMarquee);
+
+    (function () {
+      const marquee = document.getElementById("reviews-marquee");
+      const track = document.getElementById("reviews-track");
+      if (!marquee || !track) return;
+
+      const ensureLoopWidth = () => {
+        const containerWidth = marquee.clientWidth;
+        let trackWidth = track.scrollWidth;
+        const items = Array.from(track.children);
+        let safety = 20;
+        while (trackWidth < containerWidth * 2 && safety-- > 0) {
+          items.forEach((el) => track.appendChild(el.cloneNode(true)));
+          trackWidth = track.scrollWidth;
+        }
+      };
+      ensureLoopWidth();
+      window.addEventListener("resize", ensureLoopWidth);
+
+      marquee.addEventListener("mouseenter", () =>
+        marquee.classList.add("paused")
+      );
+      marquee.addEventListener("mouseleave", () =>
+        marquee.classList.remove("paused")
+      );
+    })();
+  }
+});
 
 // Prevent browser from restoring scroll position automatically
 if ("scrollRestoration" in history) {
