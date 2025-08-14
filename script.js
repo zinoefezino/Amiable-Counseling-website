@@ -1,95 +1,33 @@
-// document.addEventListener("DOMContentLoaded", () => {
-//   const menuIcon = document.getElementById("menu");
-//   const closeIcon = document.getElementById("close");
-//   const navList = document.querySelector(".nav-links ul");
-//   const navLinks = navList.querySelectorAll("a");
-
-//   const closeMobileMenu = () => {
-//     navList.classList.remove("show");
-//     closeIcon.style.display = "none";
-//     menuIcon.style.display = "block";
-//   };
-
-//   menuIcon.addEventListener("click", () => {
-//     navList.classList.add("show");
-//     menuIcon.style.display = "none";
-//     closeIcon.style.display = "block";
-//   });
-
-//   closeIcon.addEventListener("click", () => {
-//     closeMobileMenu();
-//   });
-
-//   navLinks.forEach((link) => {
-//     link.addEventListener("click", (e) => {
-//       e.preventDefault();
-//       const href = link.getAttribute("href");
-//       closeMobileMenu();
-//       setTimeout(() => {
-//         window.location.href = href;
-//       }, 100);
-//     });
-//   });
-// });
-
 document.addEventListener("DOMContentLoaded", () => {
-  // Select the menu toggle container and the icons
-  const menuToggle = document.querySelector(".menu-toggle");
-  const openIcon = document.getElementById("menu");
+  const menuIcon = document.getElementById("menu");
   const closeIcon = document.getElementById("close");
+  const navList = document.querySelector(".nav-links ul");
+  const navLinks = navList.querySelectorAll("a");
 
-  // Select the navigation menu itself and all the anchor links
-  const navMenu = document.querySelector(".nav-links");
-  const navLinks = document.querySelectorAll(".nav-link, .none a");
-
-  // Function to open the mobile menu
-  function openMenu() {
-    navMenu.classList.add("active");
-    openIcon.style.display = "none";
-    closeIcon.style.display = "block";
-  }
-
-  // Function to close the mobile menu
-  function closeMenu() {
-    navMenu.classList.remove("active");
-    openIcon.style.display = "block";
+  const closeMobileMenu = () => {
+    navList.classList.remove("show");
     closeIcon.style.display = "none";
-  }
+    menuIcon.style.display = "block";
+  };
 
-  // Add an event listener to the menu toggle button
-  menuToggle.addEventListener("click", () => {
-    if (navMenu.classList.contains("active")) {
-      closeMenu();
-    } else {
-      openMenu();
-    }
+  menuIcon.addEventListener("click", () => {
+    navList.classList.add("show");
+    menuIcon.style.display = "none";
+    closeIcon.style.display = "block";
   });
 
-  // Loop through all the navigation links
+  closeIcon.addEventListener("click", () => {
+    closeMobileMenu();
+  });
+
   navLinks.forEach((link) => {
-    link.addEventListener("click", (event) => {
-      // Prevent the default jump action
-      event.preventDefault();
-
-      // Get the href of the link (e.g., "#about")
-      const targetId = link.getAttribute("href");
-      const targetElement = document.querySelector(targetId);
-
-      // Close the menu first
-      closeMenu();
-
-      // Now, scroll to the element with a small delay
-      // The delay gives the browser time to finish its work
-      // A value of 300ms is usually a safe bet.
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      const href = link.getAttribute("href");
+      closeMobileMenu();
       setTimeout(() => {
-        if (targetElement) {
-          // Use scrollIntoView with a smooth behavior
-          targetElement.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-          });
-        }
-      }, 300);
+        window.location.href = href;
+      }, 100);
     });
   });
 });
